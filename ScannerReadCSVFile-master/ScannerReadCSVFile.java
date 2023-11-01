@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.Math;
 
 /**
  * Average each row of ten test scores
@@ -22,8 +23,21 @@ public class ScannerReadCSVFile
         // Continue while there's still data in the file to be read
         while (scanner.hasNext()) {
             // Read the next line of the file
-            String line = scanner.nextLine();
-            System.out.println(line);
+            String[] line = scanner.next().split(","); //String[] is an array of string obj.s, .split splits into arrays based on the char
+            double count = 0;
+            for (int i = 0; i < line.length; i++) {
+                if (i == 0) {
+                    System.out.print(line[i] + ": ");
+                } else {
+                    try {
+                        count += Double.parseDouble(line[i]); // retrn nw double value init by the value of the specified string
+                    } catch  (NumberFormatException nfe) {
+                        System.out.print(line[i] + " is not integer");
+                    }
+                }
+            }
+            System.out.println(Math.round(count/10));
+            
 
             // line now contains a line of comma-separated numbers
             // representing 10 test scores for each class.
