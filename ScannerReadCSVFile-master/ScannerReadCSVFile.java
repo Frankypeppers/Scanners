@@ -23,18 +23,17 @@ public class ScannerReadCSVFile
         // Continue while there's still data in the file to be read
         while (scanner.hasNext()) {
             // Read the next line of the file
-            String[] line = scanner.next().split(","); //String[] is an array of string obj.s, .split splits into arrays based on the char
+            String[] line = scanner.next().split(","); //String[] is an array of string obj.s, .split splits the str into an array of substr.s
             double count = 0;
-            for (int i = 0; i < line.length; i++) {
-                if (i == 0) {
-                    System.out.print(line[i] + ": ");
-                } else {
+            int i = 0;
+
+            System.out.print(line[i] + ": ");
+            for (i = 1; i < line.length; i++) {
                     try {
-                        count += Double.parseDouble(line[i]); // retrn nw double value init by the value of the specified string
+                        count += Double.parseDouble(line[i]); // return new double value init by the value of the specified string
                     } catch  (NumberFormatException nfe) {
                         System.out.print(line[i] + " is not integer");
-                    }
-                }
+                    }   
             }
             System.out.println(Math.round(count/10));
             
